@@ -1,1 +1,3 @@
 This is a readme file...
+
+I have now added a javascript file
