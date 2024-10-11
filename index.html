@@ -9,10 +9,22 @@
 
         <h1>Daily Habit Tracker</h1>
 
-        <!--<button onclick="showHabits()">Show Habits</button>!-->
+        <label>Enter habit:
+            <input type="text" id="habitAddInput">
+        </label>
+
+        <button onclick="submitHabit()">Enter</button>
 
         <div id="habitsList"></div>
 
+        <label>Remove Habit:
+            <input type="number" id="habitRemoveInput">
+        </label>
+        <button onclick="removeHabit()">Enter</button>
+
+        <button onclick="clearHabits()">Clear Habits</button>
+
         <script src="script.js"></script>
+
     </body>
 </html>

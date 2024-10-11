@@ -1,29 +1,40 @@
 function addHabit(habit) {
 
-    let habits = JSON.parse(localStorage.getItem('habits')) || [];
+    if(habit) { // check argument is not blank/null
 
-    habits.push(habit);
+        let habits = getHabits();  // Grab habits from local storage
 
-    localStorage.setItem('habits', JSON.stringify(habits));
+        habits.push(habit); // Push new habit to top of object array
+
+        localStorage.setItem('habits', JSON.stringify(habits)); // Pass the new object array back into storage
+    }
 }
 
-function removeHabit(index) {
+function removeHabit() {
 
-    let habits = JSON.parse(localStorage.getItem('habits')) || [];
+    indexInputElement = document.getElementById("habitRemoveInput")
 
-    if (index > -1 && index < habits.length) {
-        habits.splice(index, 1);
+    let index = indexInputElement.value -1;
+
+    let habits = getHabits();
+
+    if (index > -1 && index < habits.length) {  // Check if index is valid
+        habits.splice(index, 1);    // Remove value at index
         localStorage.setItem('habits', JSON.stringify(habits));
     }
     else {
         console.log("Index error...");
     }
+
+    indexInputElement.value = ""; // Reset text box
+    showHabits(); // Reload habits on page
 }
 
-function deleteHabits() {
+function clearHabits() {
 
     let habits = [];
     localStorage.setItem('habits', JSON.stringify(habits));
+    showHabits();
 }
 
 function getHabits() {
@@ -39,7 +50,7 @@ function showHabits() {
 
     habitsListElement.innerHTML = "";   // set element to blank
 
-    const ul = document.createElement('ul'); // Create an unordered list
+    const ul = document.createElement('ol'); // Create an ordered list
 
     habits.forEach((habit) => {
 
@@ -51,5 +62,16 @@ function showHabits() {
     habitsListElement.appendChild(ul); // Append the unordered list to the habits list element
 }
 
+function submitHabit() {    // Refers to user entering habit into text box...
+
+    let habitInputElement = document.getElementById("habitAddInput") // Get text within button
+
+    let habit = habitInputElement.value;
+
+    addHabit(habit);    // Push habit to local storage
+    showHabits();   // Reload habits on page
+
+    habitInputElement.value = "";   // Set text box blank
+}
 
 showHabits();
