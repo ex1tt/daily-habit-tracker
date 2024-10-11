@@ -1,3 +1,11 @@
+function getHabits() {
+    return JSON.parse(localStorage.getItem('habits')) || [];
+}
+
+function setHabits(habits) {
+    return localStorage.setItem('habits', JSON.stringify(habits));
+}
+
 function addHabit(habit) {
 
     if(habit) { // check argument is not blank/null
@@ -6,40 +14,51 @@ function addHabit(habit) {
 
         habits.push({name: habit, completed: false}); // Push new habit key-value pair -> completed initialized as false
 
-        localStorage.setItem('habits', JSON.stringify(habits)); // Pass the new object array back into storage
+        setHabits(habits); // Pass the new object array back into storage
     }
 }
 
 function removeHabit() {
 
-    indexInputElement = document.getElementById("habitRemoveInput")
+    indexInputElement = document.getElementById("habitIndexInput");
 
     let index = indexInputElement.value -1;
 
     let habits = getHabits();
 
     if (index > -1 && index < habits.length) {  // Check if index is valid
-        habits.splice(index, 1);    // Remove value at index
-        localStorage.setItem('habits', JSON.stringify(habits));
-    }
-    else {
-        console.log("Index error...");
-    }
 
-    indexInputElement.value = ""; // Reset text box
-    showHabits(); // Reload habits on page
+        habits.splice(index, 1);    // Remove value at index
+        setHabits(habits);
+
+        indexInputElement.value = ""; // Reset text box
+        showHabits(); // Reload habits on page
+    }
+}
+
+function completeHabit() {
+
+    indexInputElement = document.getElementById("habitIndexInput"); // Get index element
+
+    let index = indexInputElement.value -1; // Get index from element
+
+    let habits = getHabits();   // Get habits
+
+    if (index > -1 && index < habits.length) {  // Check if index is valid
+
+        habits[index].completed = true;    // Set corrseponding habit value to completed
+        setHabits(habits);  // Push new habits to local storage
+
+        indexInputElement.value = ""; // Reset text box
+        showHabits();   // Refresh habits...
+    }
 }
 
 function clearHabits() {
 
     let habits = [];
-    localStorage.setItem('habits', JSON.stringify(habits));
+    setHabits(habits);
     showHabits();
-}
-
-function getHabits() {
-
-    return JSON.parse(localStorage.getItem('habits')) || [];
 }
 
 function showHabits() {
@@ -64,7 +83,7 @@ function showHabits() {
 
 function submitHabit() {    // Refers to user entering habit into text box...
 
-    let habitInputElement = document.getElementById("habitAddInput") // Get text within button
+    let habitInputElement = document.getElementById("habitAddInput"); // Get text within button
 
     let habit = habitInputElement.value;
 
@@ -74,6 +93,5 @@ function submitHabit() {    // Refers to user entering habit into text box...
     habitInputElement.value = "";   // Set text box blank
 }
 
-console.log(getHabits());
-
-showHabits();
+console.log(getHabits());   // Debugging
+showHabits();   // Load habits on start...
