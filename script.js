@@ -4,7 +4,7 @@ function addHabit(habit) {
 
         let habits = getHabits();  // Grab habits from local storage
 
-        habits.push(habit); // Push new habit to top of object array
+        habits.push({name: habit, completed: false}); // Push new habit key-value pair -> completed initialized as false
 
         localStorage.setItem('habits', JSON.stringify(habits)); // Pass the new object array back into storage
     }
@@ -55,7 +55,7 @@ function showHabits() {
     habits.forEach((habit) => {
 
         const li = document.createElement('li'); // Create a list item
-        li.textContent = habit; // Set the text to the habit
+        li.textContent = `${habit.name} - ${habit.completed ? 'Completed' : 'Not Completed'}`; // Set the text to the habit
         ul.appendChild(li); // Append the list item to the unordered list
     });
 
@@ -73,5 +73,7 @@ function submitHabit() {    // Refers to user entering habit into text box...
 
     habitInputElement.value = "";   // Set text box blank
 }
+
+console.log(getHabits());
 
 showHabits();
