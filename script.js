@@ -20,37 +20,40 @@ function addHabit(habit) {
 
 function removeHabit() {
 
-    indexInputElement = document.getElementById("habitIndexInput");
+    const urlParams = new URLSearchParams(window.location.search);
+    const habitName = urlParams.get('name');    // retreive habit name based on url query
 
-    let index = indexInputElement.value -1;
+    let habits = getHabits();   // Get habits
 
-    let habits = getHabits();
+    const index = habits.findIndex(h => h.name === habitName);   // retreive habit objects index based on habit name
 
-    if (index > -1 && index < habits.length) {  // Check if index is valid
+    if (index > -1) {  // Check if index is valid
 
         habits.splice(index, 1);    // Remove value at index
         setHabits(habits);
-
-        indexInputElement.value = ""; // Reset text box
-        showHabits(); // Reload habits on page
+        displayHabitInformation();
     }
 }
 
 function completeHabit() {
 
-    indexInputElement = document.getElementById("habitIndexInput"); // Get index element
-
-    let index = indexInputElement.value -1; // Get index from element
+    const urlParams = new URLSearchParams(window.location.search);
+    const habitName = urlParams.get('name');    // retreive habit name based on url query
 
     let habits = getHabits();   // Get habits
 
-    if (index > -1 && index < habits.length) {  // Check if index is valid
+    const index = habits.findIndex(h => h.name === habitName);   // retreive habit objects index based on habit name
 
-        habits[index].completed = true;    // Set corrseponding habit value to completed
+    if (index > -1) {  // Check if index is valid
+
+        if(habits[index].completed) {
+            habits[index].completed = false;
+        }
+        else {
+            habits[index].completed = true;
+        }
         setHabits(habits);  // Push new habits to local storage
-
-        indexInputElement.value = ""; // Reset text box
-        showHabits();   // Refresh habits...
+        displayHabitInformation();
     }
 }
 
@@ -69,7 +72,7 @@ function showHabits() {
 
     habitsListElement.innerHTML = "";   // set element to blank
 
-    const ul = document.createElement('ol'); // Create an ordered list
+    const ul = document.createElement('ul'); // Create an ordered list
 
     habits.forEach((habit) => {
 
@@ -94,13 +97,11 @@ function submitHabit() {    // Refers to user entering habit into text box...
 
     if(!checkHabitExists(habit)) { // Check if habit exists first to avoid duplicates...
 
-        console.log("FFW")
-
         addHabit(habit);    // Push habit to local storage
         showHabits();   // Reload habits on page
-    }
 
-    habitInputElement.value = "";   // Set text box blank
+        habitInputElement.value = "";   // Set text box blank
+    }
 }
 
 function checkHabitExists(name) {
@@ -122,8 +123,6 @@ function displayHabitInformation() {
 
     let headerElement = document.getElementById("habit-name");
     let statusElement = document.getElementById("habit-status");
-
-    console.log(!checkHabitExists(habitName))
 
     if(habit) {
         console.log(habit);      
