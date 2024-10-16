@@ -9,23 +9,37 @@
         <title>Habit Tracker</title>
 
     </head>
+
     <body onload="showHabits()">
 
-        <h1>Daily Habit Tracker</h1>
+        <header>
+            <h1>Daily Habit Tracker</h1>
+            <h3>Welcome User</h3>
+        </header>
 
-        <h3>Welcome User</h3>
+        <main>
 
-        <div id="habitsList"></div>
+            <section id="habitsList"></section>
 
-        <label>Add habit:
-            <input type="text" id="habitAddInput">
-        </label>
+            <section id="add-section">
+                <label>Add habit:
+                    <input type="text" id="habitAddInput">
+                </label>
+                <button onclick="submitHabit()">Enter</button>
+            </section>
 
-        <button onclick="submitHabit()">Enter</button>
+            <button onclick="clearHabits()">Clear Habits</button>
 
-        <button onclick="clearHabits()">Clear Habits</button>
+        </main>
+        
+        <footer>
+
+            <p>All rights reserved.</p>
+
+        </footer>
 
         <script src="script.js"></script>
 
     </body>
+
 </html>
