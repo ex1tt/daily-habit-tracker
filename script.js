@@ -98,7 +98,7 @@ function submitHabit() {    // Refers to user entering habit into text box...
     if(!checkHabitExists(habit)) { // Check if habit exists first to avoid duplicates...
 
         addHabit(habit);    // Push habit to local storage
-        showHabits();   // Reload habits on page
+        location.assign("index.html");
 
         habitInputElement.value = "";   // Set text box blank
     }
