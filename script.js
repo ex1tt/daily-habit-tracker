@@ -6,16 +6,13 @@ function setHabits(habits) {
     return localStorage.setItem('habits', JSON.stringify(habits));
 }
 
-function addHabit(habit) {
+function addHabit(name, desc, time, complete) {
 
-    if(habit) { // check argument is not blank/null
+    let habits = getHabits();  // Grab habits from local storage
 
-        let habits = getHabits();  // Grab habits from local storage
+    habits.push({name: name, completed: complete, description: desc, time: time}); // Push new habit key-value pair -> completed initialized as false
 
-        habits.push({name: habit, completed: false}); // Push new habit key-value pair -> completed initialized as false
-
-        setHabits(habits); // Pass the new object array back into storage
-    }
+    setHabits(habits); // Pass the new object array back into storage
 }
 
 function removeHabit() {
@@ -31,7 +28,6 @@ function removeHabit() {
 
         habits.splice(index, 1);    // Remove value at index
         setHabits(habits);
-        displayHabitInformation();
     }
 }
 
@@ -91,16 +87,27 @@ function showHabits() {
 
 function submitHabit() {    // Refers to user entering habit into text box...
 
-    let habitInputElement = document.getElementById("habitAddInput"); // Get text within button
+    let habitNameElement = document.getElementById("habitNameInput"); // Get name 
+    let habitDescElement = document.getElementById("habitDescriptionInput"); // Get description
+    let habitTimeElement = document.getElementById("habitTimeInput"); // Get time to complete
+    let habitCompletedElement = document.getElementById("habitCompletedInput"); // Get completed today
 
-    let habit = habitInputElement.value;
+    let habitName = habitNameElement.value;
+    let habitDesc = habitDescElement.value;
+    let habitTime = habitTimeElement.value;
+    let habitCompleted = habitCompletedElement.checked;
 
-    if(!checkHabitExists(habit)) { // Check if habit exists first to avoid duplicates...
+    let filledIn = habitName && habitDesc && habitTime
 
-        addHabit(habit);    // Push habit to local storage
+    if(!checkHabitExists(habitName) && filledIn) { // Check if habit exists first to avoid duplicates...
+
+        addHabit(habitName, habitDesc, habitTime, habitCompleted);    // Push habit info to local storage
         location.assign("index.html");
 
-        habitInputElement.value = "";   // Set text box blank
+        habitNameElement.value = "";   // Set text box blank
+        habitDescElement.value = "";   // Set text box blank
+        habitTimeElement.value = "";   // Set text box blank
+        habitCompletedElement.value = "";   // Set text box blank
     }
 }
 
@@ -123,11 +130,14 @@ function displayHabitInformation() {
 
     let headerElement = document.getElementById("habit-name");
     let statusElement = document.getElementById("habit-status");
+    let descElement = document.getElementById("habit-description");
+    let timeElement = document.getElementById("habit-time-to-complete");
 
-    if(habit) {
-        console.log(habit);      
+    if(habit) {    
         headerElement.textContent = `Habit: ${habit.name}`; // Set header to equal selected habit
         statusElement.textContent = `Status: ${habit.completed ? 'Completed' : 'Not Completed'}`;
+        descElement.textContent = `Description: ${habit.description}`;
+        timeElement.textContent = `Time To Complete: ${habit.time}`;
     }
     else {
         headerElement.textContent = 'Habit: Null'
