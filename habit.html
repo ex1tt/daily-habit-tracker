@@ -10,7 +10,7 @@
 
     </head>
 
-    <body onload="displayHabitInformation()">
+    <body>
 
         <header>
             <h1 id="habit-name"></h1>
@@ -25,8 +25,8 @@
             </section>
 
             <section>
-                <button onclick="completeHabit()">Complete/Uncomplete</button>
-                <button onclick="location.href = 'index.html', removeHabit()">Remove</button>
+                <button id="complete-habit-button">Complete/Uncomplete</button>
+                <button id="remove-habit-button">Remove</button>
             </section>
 
         </main>
@@ -41,7 +41,8 @@
             </p>
         </footer>
 
-        <script src="script.js"></script>
+        <!-- JavaScript files -->
+        <script type="module" src="js/habit-main.js" defer></script>
 
     </body>
 
