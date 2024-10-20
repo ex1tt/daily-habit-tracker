@@ -1,5 +1,7 @@
 // Contains functions for getting, setting, adding, removing habits etc...
 
+import { clearEditFields } from "./event-handler.js";
+
 // Function to get habits from local storage
 export function getHabits() {
     return JSON.parse(localStorage.getItem('habits')) || [];
@@ -17,6 +19,31 @@ export function addHabit(name, desc, time, complete) {
     habits.push({ name, description: desc, time, completed: complete });
 
     setHabits(habits);
+}
+
+// Function to edit a habit
+export function editHabit(current_window, name, desc, time, completed) {
+
+    let habitName = getHabitNameFromQuery(current_window);
+    const habits = getHabits();
+    const habit = habits.find(h => h.name === habitName);
+
+    // Only edits if habit exists and is not a duplicate of another habit...
+    if(habit && (!checkHabitExists(name) || habitName === name)) {
+
+        habit.name = name;
+        habit.description = desc;
+        habit.time = time;
+        habit.completed = completed;
+
+        setHabits(habits);
+        clearEditFields() // Clear input fields after submission
+        location.assign("index.html");
+        
+    }
+    else{
+        displayErrorMessage("Error: Duplicate Habit")
+    }
 }
 
 // Function to remove a habit based on !habit name!
@@ -70,4 +97,10 @@ export function getHabitNameFromQuery(current_window) {
 
     return habitName;
 
+}
+
+// Helper function to display error messages on the page
+export function displayErrorMessage(message) {
+    const errorDiv = document.getElementById('error-message'); // Assuming you have an element with this ID
+    errorDiv.textContent = message;
 }

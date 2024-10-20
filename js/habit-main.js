@@ -1,4 +1,4 @@
-import { handleHabitCompletion, handleRemoveHabit } from "./event-handler.js";
+import { handleHabitCompletion, handleRemoveHabit, handleEditLink} from "./event-handler.js";
 import { displayHabitInformation } from "./ui-manager.js";
 
 // Display habit info on page load
@@ -14,4 +14,10 @@ document.getElementById('complete-habit-button').addEventListener('click', () =>
 document.getElementById('remove-habit-button').addEventListener('click', () => {
 
     handleRemoveHabit(window.location.search);
+});
+
+// Remove habit button listener
+document.getElementById('edit-habit-button').addEventListener('click', () => {
+
+    handleEditLink(window.location.search);
 });

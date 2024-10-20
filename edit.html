@@ -13,25 +13,25 @@
     <body>
 
         <header>
-            <h1>Add Habit</h1>
+            <h1 id="habit-editing-header">Edit Habit</h1>
         </header>
 
         <main>
 
             <section id="add-section">
                 <label>Habit Name:
-                    <input type="text" id="habitNameInput">
+                    <input type="text" id="habitNameEdit">
                 </label>
                 <label>Description:
-                    <input type="text" id="habitDescriptionInput">
+                    <input type="text" id="habitDescriptionEdit">
                 </label>
                 <label>Time to complete:
-                    <input type="time" id="habitTimeInput">
+                    <input type="time" id="habitTimeEdit">
                 </label>
                 <label>Completed today?:
-                    <input type="checkbox" id="habitCompletedInput">
+                    <input type="checkbox" id="habitCompletedEdit">
                 </label>
-                <button id="submit-habit-button">Submit</button>
+                <button id="submit-edit-button">Edit</button>
             </section>
 
             <p id="error-message"></p>
@@ -49,7 +49,7 @@
         </footer>
 
         <!-- JavaScript files -->
-        <script type="module" src="js/add-main.js"></script>
+        <script type="module" src="js/edit-main.js"></script>
 
     </body>
 
