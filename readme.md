@@ -4,5 +4,8 @@
 ## Description
 A simple and easy to use habit tracker.
 Set a habit, create a description, set a time to complete!
+Delete habits as you please!
+Update habits when you want a change!
+Clear habits when you want to start fresh! 
 
 ### Currently A work in progess!
