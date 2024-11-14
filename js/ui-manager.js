@@ -9,8 +9,10 @@ export function showHabits() {
     const habitsListElement = document.getElementById("habitsList");
     habitsListElement.innerHTML = ""; // Clear existing habits
 
+    // creates a html unordered list
     const ul = document.createElement('ul');
 
+    // for each item in list
     habits.forEach(habit => {
 
         const li = document.createElement('li');
