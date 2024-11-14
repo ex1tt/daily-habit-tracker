@@ -88,6 +88,20 @@ export function toggleHabitCompletion(current_window) {
     }
 }
 
+function setAllHabitsCompletedFalse() {
+
+    const habits = getHabits();
+
+    habits.forEach(habit => {
+
+        habit.completed = false;
+
+    });
+
+    setHabits(habits);
+
+}
+
 // Function to get a habit name based on page query -> used only in habit.html
 export function getHabitNameFromQuery(current_window) {
 
@@ -103,4 +117,25 @@ export function getHabitNameFromQuery(current_window) {
 export function displayErrorMessage(message) {
     const errorDiv = document.getElementById('error-message'); // Assuming you have an element with this ID
     errorDiv.textContent = message;
+}
+
+// Function to reset all habits to false if a day has passed.
+export function checkNewDay() {
+
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+
+    const lastDate = localStorage.getItem('lastDateLoad')
+
+    // If todays date does not match the last login data
+    if(today != lastDate) {
+
+        console.log(today)
+        console.log(lastDate)
+
+        setAllHabitsCompletedFalse();
+
+        localStorage.setItem('lastDateLoad', today);
+    }
+
 }
