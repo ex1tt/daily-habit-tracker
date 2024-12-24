@@ -76,6 +76,6 @@ export function displayEditInformation(current_window) {
         habitCompletedElement.checked = habit.completed;
 
     } else {
-        console.log("EUIERUI");
+        displayErrorMessage("Error: Habit not found.")
     }
 }

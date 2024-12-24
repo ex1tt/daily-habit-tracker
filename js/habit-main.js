@@ -16,7 +16,7 @@ document.getElementById('remove-habit-button').addEventListener('click', () => {
     handleRemoveHabit(window.location.search);
 });
 
-// Remove habit button listener
+// Edit habit button listener
 document.getElementById('edit-habit-button').addEventListener('click', () => {
 
     handleEditLink(window.location.search);

@@ -137,5 +137,4 @@ export function checkNewDay() {
 
         localStorage.setItem('lastDateLoad', today);
     }
-
 }
