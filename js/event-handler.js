@@ -11,7 +11,7 @@ export function handleSubmit() {
     const habitCompleted = document.getElementById("habitCompletedInput").checked;
 
     if(!(habitName && habitDesc && habitTime)) {
-        displayErrorMessage("Error: Please fill in all sections of form.");
+        displayErrorMessage("Error: Key Information Missing.");
     }
     else if(checkHabitExists(habitName)) {
         displayErrorMessage("Error: Habit Exists.");
@@ -32,6 +32,7 @@ function clearInputFields() {
     document.getElementById("habitCompletedInput").checked = false;
 }
 
+// Function to clear edit fields after submitting
 export function clearEditFields() {
 
     document.getElementById("habitNameEdit").value = "";
@@ -88,6 +89,9 @@ export function handleSubmitEdit(current_window) {
 
         editHabit(current_window, newHabitName, newHabitDesc, newHabitTime, newHabitCompleted);
 
+    }
+    else {
+        displayErrorMessage("Error: Key Information Missing.")
     }
 
 }

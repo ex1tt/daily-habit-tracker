@@ -4,9 +4,16 @@
 
         <meta charset="utf-8"/>
 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <link rel="stylesheet" href="styles.css"/>
 
         <title>Habit Tracker</title>
+
+        <!-- Font Stuff -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
     </head>
 
@@ -19,21 +26,23 @@
 
         <main>
 
-            <!-- List of current habits -->
-            <section id="habitsList"></section>
+            <section id="habits-container">
 
-            <button id="clear-habits-button">Clear Habits</button>
+                <h2>Current Habits</h2>
+                <!-- List of current habits -->
+                <section id="habitsList"></section>
+
+                <button id="clear-habits-button">Clear Habits</button>
+
+                <a href="add.html">New Habit</a>
+
+            </section>
 
         </main>
 
-        <nav>
-            <a href="add.html">New Habit</a>
-        </nav>
-        
         <footer>
-            <p>   
-                <small>All rights reserved.</small>
-            </p>
+  
+            <small>&copy; Albert Murphy. All rights reserved.</small>
         </footer>
 
         <!-- JavaScript File -->

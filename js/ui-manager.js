@@ -20,6 +20,7 @@ export function showHabits() {
 
         a.href = `habit.html?name=${encodeURIComponent(habit.name)}`;
         a.textContent = `${habit.name} - ${habit.completed ? 'Completed' : 'Not Completed'}`;
+        a.style.color = `${habit.completed ? 'green' : 'red'}`;
 
         li.appendChild(a);
         ul.appendChild(li);
@@ -40,6 +41,7 @@ export function displayHabitInformation(current_window) {
     const statusElement = document.getElementById("habit-status");
     const descElement = document.getElementById("habit-description");
     const timeElement = document.getElementById("habit-time-to-complete");
+    const completeButton = document.getElementById("complete-habit-button");
 
     if (habit) {
 
@@ -47,6 +49,8 @@ export function displayHabitInformation(current_window) {
         statusElement.textContent = `Status: ${habit.completed ? 'Completed' : 'Not Completed'}`;
         descElement.textContent = `Description: ${habit.description}`;
         timeElement.textContent = `Time To Complete: ${habit.time}`;
+        completeButton.textContent = `${habit.completed ? 'Uncomplete' : 'Complete'}`;
+        statusElement.style.color = `${habit.completed ? 'green' : 'red'}`;
 
     } else {
         displayErrorMessage("Error: Habit not found.")

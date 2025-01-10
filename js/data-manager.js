@@ -42,7 +42,7 @@ export function editHabit(current_window, name, desc, time, completed) {
         
     }
     else{
-        displayErrorMessage("Error: Duplicate Habit")
+        displayErrorMessage("Error: Duplicate Habit.")
     }
 }
 
@@ -82,7 +82,7 @@ export function toggleHabitCompletion(current_window) {
     const habit = habits.find(h => h.name === habitName);
 
     if (habit) {
-
+        
         habit.completed = !habit.completed;
         setHabits(habits);
     }

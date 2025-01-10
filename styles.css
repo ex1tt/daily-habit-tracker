@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+header {
+    padding: 2em;
+    margin-top: 2em;
+}
+
+header h3 {
+    padding: 1em;
+}
+
+nav {
+    padding: 1em;
+}
+
+nav a{
+    text-decoration: none;
+    color: black;
+    font-size: 1em;
+}
+
+#habits-container h2 {
+    padding: 1em;
+}
+
+button, #habits-container > a {
+    margin: 1em;
+    text-decoration: none;
+    padding: 0.5em;
+    border: 1px solid black;
+    font-size: 1em;
+    background-color: lightgray;
+    color: black;
+    cursor: pointer;
+}
+
+#habits-container button,  #habits-container > a{
+    margin: 1em;
+    text-decoration: none;
+    padding: 0.5em;
+    border: 1px solid black;
+    font-size: 1em;
+    background-color: lightgray;
+    color: black;
+}
+
+#habitsList li {
+    list-style: none;
+    padding: 0.5em;
+}
+
+#habitsList li a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#add-section {
+
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+}
+
+#add-section label {
+    padding: 1em;
+}
+
+#add-section button {
+    padding: 1em;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#error-message {
+    color: rgb(137, 0, 0);
+    padding-bottom: 1em;
+}
+
+#habit-info p {
+    padding: 1em;
+}
+
+#habit-main-section button {
+    margin: 0.5em;
+}
+
+.backToHomeLink {
+
+    color: rgb(171, 0, 0);
+
+}
+
+@media screen and (max-width: 1150px) {
+
+    #add-section {
+        width: 50%;
+    }
+    
+}
+
+@media screen and (max-width: 650px) {
+
+    #add-section {
+        width: 70%;
+    }
+    
+}
