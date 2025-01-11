@@ -70,6 +70,12 @@ button, #habits-container > a {
 
 #add-section label {
     padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+#add-section label input {
+    text-align: left;
 }
 
 #add-section button {
