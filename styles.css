@@ -72,6 +72,8 @@ button, #habits-container > a {
     padding: 1em;
     display: flex;
     flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #add-section label input {
