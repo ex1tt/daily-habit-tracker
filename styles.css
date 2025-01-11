@@ -72,14 +72,12 @@ button, #habits-container > a {
     padding: 1em;
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 #add-section label input {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #add-section button {
