@@ -130,9 +130,6 @@ export function checkNewDay() {
     // If todays date does not match the last login data
     if(today != lastDate) {
 
-        console.log(today)
-        console.log(lastDate)
-
         setAllHabitsCompletedFalse();
 
         localStorage.setItem('lastDateLoad', today);
